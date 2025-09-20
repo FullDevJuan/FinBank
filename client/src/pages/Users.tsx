@@ -82,7 +82,7 @@ export default function Users() {
         />
       )}
 
-      <h1>Welcome to Users.</h1>
+      <h1>Welcome to customers.</h1>
       <section className="navbarOptions">
         <Button
           onClickBtn={() => {
