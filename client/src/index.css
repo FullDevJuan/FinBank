@@ -1,0 +1,208 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  margin: 0;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+input {
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  border-left: 1px solid;
+  border-bottom: 2px solid;
+  padding: 8px 3px;
+}
+
+.dashboard {
+  display: flex;
+  gap: 5px;
+  height: 100vh;
+  overflow: hidden;
+  padding: 5px;
+  background-color: #f5f5f5;
+}
+
+.sidebar {
+  background-color: #fff;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  width: 150px;
+  padding: 5px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.navItem {
+  border-radius: 8px;
+  padding: 3px;
+  text-align: center;
+  text-decoration: none;
+  color: #111;
+  width: 100%;
+}
+
+.navItemActive {
+  background-color: #333;
+  color: #fff;
+}
+
+.content {
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  flex: 1;
+  overflow: auto;
+  padding: 10px;
+
+  h1 {
+    text-align: center;
+  }
+}
+.Error {
+  color: rgb(255, 101, 101);
+  font-size: 0.75rem;
+}
+.mainContent {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.userCard {
+  width: 200px;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
+  color: #333;
+  position: relative;
+
+  header {
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    display: flex;
+    gap: 5px;
+  }
+
+  span.date {
+    opacity: 0.5;
+    font-size: 0.8rem;
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+  }
+
+  .btn-extend,
+  .btn-delete {
+    position: absolute;
+    right: 0;
+    background-color: transparent;
+    color: #000;
+  }
+  .btn-delete {
+    bottom: 0;
+  }
+}
+
+.navbarOptions {
+  margin-bottom: 20px;
+}
+
+.filters {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  div {
+    display: flex;
+    gap: 10px;
+  }
+  .apply-filters,
+  .refresh-filters {
+    background-color: #222;
+    color: #fff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+button.createUser {
+  background-color: #333;
+  color: #fff;
+  padding: 5px 20px;
+  border-radius: 8px;
+}
+
+.modal {
+  position: fixed;
+  z-index: 100;
+  height: 100%;
+  width: 100%;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalContent {
+  background-color: #333;
+  padding: 10px;
+  border-radius: 8px;
+  width: 90%;
+  width: 400px;
+}
+
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    color: #fff;
+
+    input {
+      color: #fff;
+      background-color: #555;
+    }
+  }
+}
+
+.saveUser,
+.cancelSave {
+  border-radius: 8px;
+  padding-block: 6px;
+}
+
+.saveUser {
+  background-color: #fff;
+}
+
+.cancelSave {
+  width: 100%;
+  margin-top: 8px;
+  background-color: #222;
+  color: #fff;
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
