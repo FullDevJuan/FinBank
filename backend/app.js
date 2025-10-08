@@ -1,5 +1,5 @@
 import express from "express";
-import { usersRouter } from "./src/services/users/routes.js";
+import userService from "./src/services/users/index.js";
 import cors from "cors";
 
 const app = express();
@@ -11,9 +11,6 @@ app.use(
   })
 );
 
-app.use("/api/users", usersRouter);
+app.use("/api/users", userService);
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`server on http://localhost:${PORT}`);
-});
+export default app;
