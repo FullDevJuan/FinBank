@@ -1,4 +1,4 @@
-import { pool } from "../src/config/db";
+import { pool } from "../src/core/db.js";
 
 afterAll(async () => {
   await pool.end();
