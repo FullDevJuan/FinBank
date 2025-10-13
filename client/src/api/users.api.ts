@@ -6,7 +6,7 @@ export async function getUsers() {
     const req = await fetch(`${BACKEND_URL}/users`);
     const data = await req.json();
     return data;
-  } catch (error: any) {
+  } catch (error) {
     console.log(error);
     return { msg: "Error al cargar los usuarios. Intente más tarde." };
   }

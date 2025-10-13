@@ -4,7 +4,7 @@ import CreateUser from "../components/users/CreateUser.tsx";
 import { type Users } from "../types/user.types.ts";
 import UpdateUser from "../components/users/UpdateUser.tsx";
 import {
-  deleteUser,
+  // deleteUser,
   getUsersByFilters,
   getUsers,
   saveUser,
@@ -114,7 +114,7 @@ export default function Users() {
               className="apply-filters"
               onClick={() => {
                 const cleanFilters = Object.fromEntries(
-                  Object.entries(filters).filter(([_, v]) => v !== "")
+                  Object.entries(filters).filter(([_unk, v]) => v !== "")
                 );
                 getUsersByFilters(cleanFilters).then((res) =>
                   res.msg
@@ -281,7 +281,7 @@ export default function Users() {
                   minute: "2-digit",
                 })}
               </span>
-              {false && (
+              {/* {false && (
                 <button
                   className="btn-delete"
                   onClick={() => {
@@ -309,7 +309,7 @@ export default function Users() {
                     />
                   </svg>
                 </button>
-              )}
+              )} */}
             </div>
           </div>
         ))}
