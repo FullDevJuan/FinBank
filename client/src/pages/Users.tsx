@@ -114,7 +114,7 @@ export default function Users() {
               className="apply-filters"
               onClick={() => {
                 const cleanFilters = Object.fromEntries(
-                  Object.entries(filters).filter(([_unk, v]) => v !== "")
+                  Object.entries(filters).filter(([, v]) => v !== "")
                 );
                 getUsersByFilters(cleanFilters).then((res) =>
                   res.msg
