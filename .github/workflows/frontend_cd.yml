@@ -37,6 +37,16 @@ jobs:
         working-directory: ./client
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
+      - name: Debug - Check Vercel config
+        working-directory: ./client
+        run: |
+          echo "=== Vercel Configuration ==="
+          cat .vercel/project.json || echo "No project.json found"
+          echo "=== Package.json scripts ==="
+          cat package.json | grep -A 5 '"scripts"' || echo "No scripts found"
+          echo "=== Directory contents ==="
+          ls -la
+
       - name: Build Project Artifacts
         working-directory: ./client
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
