@@ -1,0 +1,48 @@
+name: Frontend CI
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "client/**"
+      - ".github/workflows/frontend_ci.yml"
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "client/**"
+      - ".github/workflows/frontend_ci.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Frontend Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Usar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: "npm"
+          cache-dependency-path: client/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ./client
+        run: npm ci
+
+      - name: Run lint
+        working-directory: ./client
+        run: npm run lint --if-present
+
+      - name: Run tests
+        working-directory: ./client
+        run: npm test -- --passWithNoTests
+
+      - name: Build Project
+        working-directory: ./client
+        run: npm run build
