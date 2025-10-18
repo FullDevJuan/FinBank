@@ -102,5 +102,5 @@ export function logoutUser() {
   sessionStorage.removeItem("user");
 
   // redirigin usuario al login
-  window.location.href = "/login";
+  window.location.href = "/";
 }
