@@ -1,7 +1,7 @@
-export default function Products() {
+export default function Audit() {
   return (
     <section className="content">
-      <h1>Products Page.</h1>
+      <h1>Audit Page.</h1>
     </section>
   );
 }

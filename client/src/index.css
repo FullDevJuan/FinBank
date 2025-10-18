@@ -1,3 +1,13 @@
+:root {
+  --primary-color: #0a0a0a;
+  --secondary-color: #ffffff;
+  --tertiary-color: #171717;
+  --quaternary-color: #212121;
+  --quintary-color: #7d7e7d;
+  --quintary-color-opacity: rgba(125, 126, 125, 0.5);
+  --error-color: #ff7979c9;
+}
+
 * {
   margin: 0;
   box-sizing: border-box;
@@ -6,24 +16,108 @@
 }
 
 body {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
   margin: 0;
   font-size: 14px;
   overflow: hidden;
+  height: 100vh;
+  position: relative;
 }
 
 button {
   cursor: pointer;
+  box-shadow: 0 0 0 0.05em var(--quintary-color-opacity);
   border: none;
   background: transparent;
 }
 
-input {
+input,
+select {
   outline: none;
-  border: none;
   border-radius: 8px;
-  border-left: 1px solid;
-  border-bottom: 2px solid;
-  padding: 8px 3px;
+  padding: 8px;
+  background-color: var(--quaternary-color);
+  border: none;
+  box-shadow: 0 0 0 0.05em var(--quintary-color-opacity);
+  border-width: 0.05em;
+}
+
+select {
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+select option {
+  background-color: var(--quaternary-color);
+  color: var(--secondary-color);
+}
+.error {
+  color: var(--error-color);
+}
+.loginHeader {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  align-items: center;
+
+  img {
+    width: 80px;
+  }
+}
+
+.login {
+  background-color: var(--tertiary-color);
+  width: 80%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 0 0 0.05em var(--quintary-color-opacity);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  header h1 {
+    margin-bottom: 7px;
+  }
+
+  p {
+    color: var(--quintary-color);
+  }
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login form div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  label {
+    font-weight: 500;
+  }
+  input {
+    color: var(--secondary-color);
+  }
+}
+
+.login form button {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
 }
 
 .dashboard {
@@ -31,40 +125,76 @@ input {
   gap: 5px;
   height: 100vh;
   overflow: hidden;
-  padding: 5px;
-  background-color: #f5f5f5;
+  padding: 10px;
+  background-color: var(--tertiary-color);
 }
 
 .sidebar {
-  background-color: #fff;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-  width: 150px;
+  width: 250px;
   padding: 5px;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 10px;
+  position: relative;
+  section.logo {
+    display: flex;
+    align-items: center;
+    img {
+      width: 35px;
+      height: 35px;
+    }
+    h1 {
+      font-size: 1.3rem;
+    }
+  }
+
+  section.userProfile {
+    width: calc(100% - 10px);
+    position: absolute;
+    bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    div.userProfileInfo {
+      display: flex;
+      flex-direction: column;
+
+      p:last-child {
+        font-size: 0.7rem;
+        color: var(--quintary-color);
+      }
+    }
+
+    button {
+      box-shadow: none;
+      color: var(--secondary-color);
+      justify-self: flex-end;
+    }
+  }
 }
 
 .navItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   border-radius: 8px;
   padding: 3px;
-  text-align: center;
   text-decoration: none;
-  color: #111;
+  color: var(--secondary-color);
   width: 100%;
+  font-weight: 500;
 }
 
 .navItemActive {
-  background-color: #333;
-  color: #fff;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 .content {
   border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  background-color: var(--primary-color);
   flex: 1;
   overflow: auto;
   padding: 10px;
@@ -74,7 +204,7 @@ input {
   }
 }
 .Error {
-  color: rgb(255, 101, 101);
+  color: var(--error-color);
   font-size: 0.75rem;
 }
 .mainContent {
@@ -83,12 +213,13 @@ input {
   flex-wrap: wrap;
 }
 .userCard {
-  width: 200px;
+  min-width: 250px;
   padding: 8px;
   border-radius: 8px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
-  color: #333;
+  color: var(--secondary-color);
   position: relative;
+  background-color: var(--quaternary-color);
+  box-shadow: 0 0 0 0.05em var(--quintary-color-opacity);
 
   header {
     margin-bottom: 10px;
@@ -100,7 +231,7 @@ input {
   }
 
   span.date {
-    opacity: 0.5;
+    color: var(--quintary-color);
     font-size: 0.8rem;
     display: flex;
     gap: 5px;
@@ -111,8 +242,8 @@ input {
   .btn-delete {
     position: absolute;
     right: 0;
-    background-color: transparent;
-    color: #000;
+    color: var(--secondary-color);
+    box-shadow: none;
   }
   .btn-delete {
     bottom: 0;
@@ -145,8 +276,8 @@ input {
 }
 
 button.createUser {
-  background-color: #333;
-  color: #fff;
+  background-color: var(--quaternary-color);
+  color: var(--secondary-color);
   padding: 5px 20px;
   border-radius: 8px;
 }

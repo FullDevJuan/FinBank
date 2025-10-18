@@ -1,21 +1,40 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Nav from "./components/common/Nav";
-import Home from "./pages/Home";
-import Users from "./pages/Users";
-import Products from "./pages/Products";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Login from "./pages/Login";
+import Dashboard from "./layout/Dashboard";
+import { loginUser } from "./api/users.api";
+import type { UsersLogin } from "./types/user.types";
+import { useNavigate } from "react-router-dom";
 
 function App() {
+  const navigate = useNavigate();
+
+  const handleLogin = async (data: UsersLogin) => {
+    const result = await loginUser(data);
+    if (result.success) {
+      navigate("/dashboard");
+    } else {
+      alert("Login failed: " + result.error);
+    }
+  };
+
+  // Verificar si el usuario está autenticado
+  const isAuthenticated = sessionStorage.getItem("token") !== null;
+
   return (
-    <main className="dashboard">
-      <BrowserRouter>
-        <Nav />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="/products" element={<Products />} />
-        </Routes>
-      </BrowserRouter>
-    </main>
+    <Routes>
+      <Route 
+        path="/" 
+        element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login onSubmit={handleLogin} />} 
+      />
+      <Route 
+        path="/login" 
+        element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login onSubmit={handleLogin} />} 
+      />
+      <Route
+        path="/dashboard/*"
+        element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />}
+      />
+    </Routes>
   );
 }
 

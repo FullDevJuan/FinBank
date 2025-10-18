@@ -1,0 +1,34 @@
+/* Pearl Mist Background Container */
+.pearl-mist-background-container {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  background-color: #000000;
+}
+
+/* Pearl Mist Overlay Effect */
+.pearl-mist-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  background: radial-gradient(
+      ellipse 80% 60% at 50% 0%,
+      rgba(226, 232, 240, 0.15),
+      transparent 70%
+    ),
+    #000000;
+}
+
+/* Content Container (above background) */
+.pearl-mist-content-container {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

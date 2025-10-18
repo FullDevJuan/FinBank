@@ -1,7 +1,7 @@
-export default function Products() {
+export default function Accounts() {
   return (
     <section className="content">
-      <h1>Products Page.</h1>
+      <h1>Accounts Page.</h1>
     </section>
   );
 }

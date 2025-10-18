@@ -66,16 +66,20 @@ function Form({ defaultValues, onSubmit }: Props) {
       </div>
       <div>
         <label htmlFor="rol">Rol</label>
-        <input
+        <select
           id="rol"
-          type="text"
           {...register("rol", {
             required: { value: true, message: "Required field" },
           })}
-        />
+          className="select-rol"
+        >
+          <option value="">Select a role</option>
+          <option value="Admin">Admin</option>
+          <option value="Ejecutivo">Ejecutivo</option>
+        </select>
         {errors.rol && <Span>{String(errors.rol.message)}</Span>}
       </div>
-      <div>
+      {/* <div>
         <label htmlFor="pass">Password</label>
         <input
           type="text"
@@ -87,7 +91,8 @@ function Form({ defaultValues, onSubmit }: Props) {
             },
           })}
         />
-      </div>
+        {errors.pass && <Span>{String(errors.pass.message)}</Span>}
+      </div> */}
       <div>
         <label htmlFor="age">Age</label>
         <input
