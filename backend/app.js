@@ -1,4 +1,5 @@
 import express from "express";
+import authService from "./src/services/auth/index.js";
 import userService from "./src/services/users/index.js";
 import cors from "cors";
 
@@ -11,6 +12,7 @@ app.use(
   })
 );
 
+app.use("/api/auth", authService);
 app.use("/api/users", userService);
 
 export default app;
