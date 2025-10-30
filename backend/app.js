@@ -1,5 +1,4 @@
 import express from "express";
-import authService from "./src/services/auth/index.js";
 import userService from "./src/services/users/index.js";
 import customerService from "./src/services/customers/index.js";
 import transactionService from "./src/services/transactions/index.js";
@@ -17,7 +16,6 @@ app.use(
   })
 );
 
-app.use("/api/auth", authService);
 app.use("/api/users", userService);
 app.use("/api/customers", customerService);
 app.use("/api/transactions", transactionService);

@@ -1,4 +1,4 @@
-import { pool } from "../../../../core/db.js";
+import { pool } from "../../../../../../shared/config/db.js";
 
 export async function read(req, res) {
   try {

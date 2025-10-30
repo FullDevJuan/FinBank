@@ -1,0 +1,22 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+# copiar carpeta shared
+COPY shared ./shared
+WORKDIR /app/shared
+RUN npm install
+
+# copiar el auth-service
+WORKDIR /app/services/auth-service
+COPY services/auth-service/package*.json ./
+RUN npm ci --only=production
+
+COPY services/auth-service ./
+
+EXPOSE 3001
+
+ENV NODE_ENV=production
+ENV PORT=3001
+
+CMD ["node", "server.js"]

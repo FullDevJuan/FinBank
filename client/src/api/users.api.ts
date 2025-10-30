@@ -1,6 +1,7 @@
 import type { Users, UsersFilters, UsersLogin } from "../types/user.types";
 import getAuthHeaders from "../utils/getAuthHeaders";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+const AUTH_SERVICE_URL = import.meta.env.VITE_AUTH_SERVICE_URL;
 
 export async function getUsers() {
   try {
@@ -82,7 +83,7 @@ export async function loginUser(data: UsersLogin) {
     body: JSON.stringify(data),
   };
   try {
-    const response = await fetch(`${BACKEND_URL}/auth/login`, options);
+    const response = await fetch(`${AUTH_SERVICE_URL}/auth/login`, options);
     const result = await response.json();
     if (response.ok) {
       sessionStorage.setItem("token", result.token);

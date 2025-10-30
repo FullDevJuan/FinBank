@@ -1,4 +1,4 @@
-import { pool } from "../../../../core/db.js";
+import { pool } from "../../../../../../shared/config/db.js";
 
 export async function read(req, res) {
   const { id } = req.params;
@@ -22,11 +22,9 @@ export async function read(req, res) {
   try {
     const { rows } = await pool.query(query);
     if (rows.length === 0)
-      return res
-        .status(404)
-        .json({
-          error: "No customer products found for the given customer ID",
-        });
+      return res.status(404).json({
+        error: "No customer products found for the given customer ID",
+      });
     res.json(rows);
   } catch (error) {
     console.error("Error executing query", error);

@@ -1,6 +1,20 @@
-import { verifyUser } from "../../../users/src/controllers/userController.js";
+import { pool } from "../../../../shared/config/db.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+
+async function verifyUser(email) {
+  try {
+    const query = {
+      text: "SELECT * FROM users WHERE email = $1",
+      values: [email],
+    };
+    const { rows } = await pool.query(query);
+    return rows[0] || null;
+  } catch (error) {
+    console.error("Error verificando usuario:", error);
+    throw error;
+  }
+}
 
 export async function login(req, res) {
   const { email, pass } = req.body;
