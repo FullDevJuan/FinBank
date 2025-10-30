@@ -5,11 +5,13 @@ on:
     branches: ["main"]
     paths:
       - "backend/**"
+      - "shared/**"
       - ".github/workflows/backend_ci.yml"
   pull_request:
     branches: ["main"]
     paths:
       - "backend/**"
+      - "shared/**"
       - ".github/workflows/backend_ci.yml"
 
 permissions:
@@ -27,8 +29,16 @@ jobs:
         with:
           node-version: 18
           cache: "npm"
-          cache-dependency-path: backend/package-lock.json
+          cache-dependency-path: |
+            backend/package-lock.json
+            shared/package-lock.json
 
+      # Installar dependencias compartidas
+      - name: Instalar dependencias compartidas
+        working-directory: ./shared
+        run: npm ci
+
+      # Instalar dependencias del backend
       - name: Instalar dependencias del backend
         working-directory: ./backend
         run: npm ci
