@@ -83,7 +83,7 @@ export async function loginUser(data: UsersLogin) {
     body: JSON.stringify(data),
   };
   try {
-    const response = await fetch(`${AUTH_SERVICE_URL}/auth/login`, options);
+    const response = await fetch(`${AUTH_SERVICE_URL}/api/auth/login`, options);
     const result = await response.json();
     if (response.ok) {
       sessionStorage.setItem("token", result.token);
