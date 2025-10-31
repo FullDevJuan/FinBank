@@ -1,24 +1,24 @@
-name: Backend CI
+name: Auth Service CI
 
 on:
   push:
     branches: ["main"]
     paths:
-      - "backend/**"
+      - "services/auth-service/**"
       - "shared/**"
-      - ".github/workflows/backend_ci.yml"
+      - ".github/workflows/auth-service_ci.yml"
   pull_request:
     branches: ["main"]
     paths:
-      - "backend/**"
+      - "services/auth-service/**"
       - "shared/**"
-      - ".github/workflows/backend_ci.yml"
+      - ".github/workflows/auth-service_ci.yml"
 
 permissions:
   contents: read
 
 jobs:
-  backend-build:
+  auth-service-build:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,20 +30,19 @@ jobs:
           node-version: 18
           cache: "npm"
           cache-dependency-path: |
-            backend/package-lock.json
+            services/auth-service/package-lock.json
             shared/package-lock.json
 
       - name: Instalar dependencias compartidas
         working-directory: ./shared
         run: npm ci
 
-      # Instalar dependencias del backend
-      - name: Instalar dependencias del backend
-        working-directory: ./backend
+      - name: Instalar dependencias del auth-service
+        working-directory: ./services/auth-service
         run: npm ci
 
-      - name: Ejecutar tests del backend
-        working-directory: ./backend
+      - name: Ejecutar tests del auth-service
+        working-directory: ./services/auth-service
         env:
           DATABASE_URL: ${{ secrets.SUPABASE_DB_URL }}
         run: npm test

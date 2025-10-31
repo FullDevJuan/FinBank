@@ -1,24 +1,24 @@
-name: Backend CI
+name: Products Service CI
 
 on:
   push:
     branches: ["main"]
     paths:
-      - "backend/**"
+      - "services/products-service/**"
       - "shared/**"
-      - ".github/workflows/backend_ci.yml"
+      - ".github/workflows/products-service_ci.yml"
   pull_request:
     branches: ["main"]
     paths:
-      - "backend/**"
+      - "services/products-service/**"
       - "shared/**"
-      - ".github/workflows/backend_ci.yml"
+      - ".github/workflows/products-service_ci.yml"
 
 permissions:
   contents: read
 
 jobs:
-  backend-build:
+  products-service-build:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,20 +30,19 @@ jobs:
           node-version: 18
           cache: "npm"
           cache-dependency-path: |
-            backend/package-lock.json
+            services/products-service/package-lock.json
             shared/package-lock.json
 
       - name: Instalar dependencias compartidas
         working-directory: ./shared
         run: npm ci
 
-      # Instalar dependencias del backend
-      - name: Instalar dependencias del backend
-        working-directory: ./backend
+      - name: Instalar dependencias del products-service
+        working-directory: ./services/products-service
         run: npm ci
 
-      - name: Ejecutar tests del backend
-        working-directory: ./backend
+      - name: Ejecutar tests del products-service
+        working-directory: ./services/products-service
         env:
           DATABASE_URL: ${{ secrets.SUPABASE_DB_URL }}
         run: npm test
