@@ -102,6 +102,5 @@ export function logoutUser() {
   sessionStorage.removeItem("token");
   sessionStorage.removeItem("user");
 
-  // redirigin usuario al login
   window.location.href = "/";
 }
