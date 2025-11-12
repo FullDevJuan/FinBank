@@ -1,4 +1,4 @@
-name: Backend CD - Deploy to Render
+name: Auth service CD - Deploy to Render
 
 on:
   schedule:
