@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 export async function read(req, res) {
   try {
     const { rows } = await pool.query("SELECT * FROM users");
-    res.json(rows);
+    res.status(200).json(rows);
   } catch (error) {
     console.log(error);
   }
@@ -60,7 +60,7 @@ export async function create(req, res) {
   } catch (error) {
     console.error("Error creating user:", error);
     res.status(500).json({
-      msg: "Error al crear el usuario",
+      msg: "Error creating user",
       error: error.message,
     });
   }
@@ -90,10 +90,14 @@ export async function update(req, res) {
       ],
     };
 
-    const result = await pool.query(query);
-    res.json({ msg: "user updated" });
+    const { rows } = await pool.query(query);
+    res.status(200).json({ msg: "User successfully updated" });
   } catch (error) {
-    console.log(error);
+    console.error("Error updating user:", error);
+    res.status(500).json({
+      msg: "Error updating user",
+      error: error.message,
+    });
   }
 }
 
