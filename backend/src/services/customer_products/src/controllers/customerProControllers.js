@@ -25,9 +25,36 @@ export async function read(req, res) {
       return res.status(404).json({
         error: "No customer products found for the given customer ID",
       });
-    res.json(rows);
+    res.status(200).json(rows);
   } catch (error) {
     console.error("Error executing query", error);
     res.status(500).json({ error: "Internal server error" });
+  }
+}
+
+// TODO: registrar producto a customer
+export async function createCustomerProduct(req, res) {
+  const { body } = req;
+
+  try {
+    const query = {
+      text: `INSERT INTO customer_products (customer_id, product_id, status, current_balance, profitability, details) VALUES ($1, $2, $3, $4, $5, $6)`,
+      values: [
+        body.customer_id,
+        body.product_id,
+        body.status,
+        body.current_balance,
+        body.profitability,
+        body.details,
+      ],
+    };
+    const { rows } = await pool.query(query);
+    res.status(200).json({ msg: "Successful product registration" });
+  } catch (error) {
+    console.error("Error registering product:", error);
+    res.status(500).json({
+      msg: "Error registering product",
+      error: error.message,
+    });
   }
 }
