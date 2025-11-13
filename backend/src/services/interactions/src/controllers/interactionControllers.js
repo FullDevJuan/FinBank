@@ -1,8 +1,20 @@
 import { pool } from "../../../../../../shared/config/db.js";
 
 export async function read(req, res) {
+  const query = `SELECT 
+    ci.id,
+    c.name AS customer,
+    u.username AS user,
+    ci.interaction_type,
+    ci.subject,
+    ci.description,
+    ci.outcome,
+    ci.created_at AS date
+    FROM customer_interactions ci 
+    INNER JOIN customers c ON ci.customer_id = c.id
+    INNER JOIN users u ON ci.user_id = u.id`;
   try {
-    const { rows } = await pool.query("SELECT * FROM customer_interactions");
+    const { rows } = await pool.query(query);
     res.json(rows);
   } catch (error) {
     console.error("Error fetching interactions:", error);
