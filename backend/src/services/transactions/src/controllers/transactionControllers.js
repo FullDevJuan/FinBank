@@ -1,4 +1,5 @@
 import { pool } from "../../../../../../shared/config/db.js";
+import { logAudit } from "../../../../../../shared/auditLogger.js";
 
 export async function read(req, res) {
   try {
@@ -38,6 +39,15 @@ export async function createTransaction(req, res) {
       ],
     };
     const { rows } = await pool.query(query);
+
+    // Log audit
+    await logAudit({
+      user_id: req.user?.id || null,
+      action: "CREATE",
+      affected_table: "transactions",
+      description: `Created transaction: ${body.transaction_type} - Amount: ${body.amount}`,
+    });
+
     res.status(200).json({ msg: "Transaction successfully created" });
   } catch (error) {
     console.error("Error creating transaction:", error);

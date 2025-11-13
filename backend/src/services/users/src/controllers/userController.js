@@ -1,5 +1,6 @@
 import { pool } from "../../../../../../shared/config/db.js";
 import bcrypt from "bcrypt";
+import { logAudit } from "../../../../../../shared/auditLogger.js";
 
 export async function read(req, res) {
   try {
@@ -53,6 +54,14 @@ export async function create(req, res) {
 
     const result = await pool.query(query);
 
+    // Log audit
+    await logAudit({
+      user_id: req.user?.id || null,
+      action: "CREATE",
+      affected_table: "users",
+      description: `Created user: ${body.email}`,
+    });
+
     res.status(201).json({
       msg: "Usuario creado exitosamente",
       user: result.rows[0],
@@ -90,7 +99,16 @@ export async function update(req, res) {
       ],
     };
 
-    const { rows } = await pool.query(query);
+    await pool.query(query);
+
+    // Log audit
+    await logAudit({
+      user_id: req.user?.id || null,
+      action: "UPDATE",
+      affected_table: "users",
+      description: `Updated user with id: ${body.id}`,
+    });
+
     res.status(200).json({ msg: "User successfully updated" });
   } catch (error) {
     console.error("Error updating user:", error);

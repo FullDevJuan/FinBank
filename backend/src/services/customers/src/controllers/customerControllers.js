@@ -1,4 +1,5 @@
 import { pool } from "../../../../../../shared/config/db.js";
+import { logAudit } from "../../../../../../shared/auditLogger.js";
 
 export async function read(req, res) {
   try {
@@ -63,6 +64,15 @@ export async function createCustomer(req, res) {
       ],
     };
     const { rows } = await pool.query(query);
+
+    // Log audit
+    await logAudit({
+      user_id: req.user?.id || null,
+      action: "CREATE",
+      affected_table: "customers",
+      description: `Created customer: ${body.name} (${body.document_number})`,
+    });
+
     res.status(201).json({ msg: "Customer successfully created" });
   } catch (error) {
     console.error("Error creating customer:", error);
@@ -100,6 +110,15 @@ export async function updateCustomer(req, res) {
       ],
     };
     const { rows } = await pool.query(query);
+
+    // Log audit
+    await logAudit({
+      user_id: req.user?.id || null,
+      action: "UPDATE",
+      affected_table: "customers",
+      description: `Updated customer with id: ${body.id}`,
+    });
+
     res.status(200).json({ msg: "Customer successfully updated" });
   } catch (error) {
     console.error("Error updating customer:", error);

@@ -1,5 +1,6 @@
 import { text } from "express";
 import { pool } from "../../../../shared/config/db.js";
+import { logAudit } from "../../../../shared/auditLogger.js";
 
 export async function read(req, res) {
   try {
@@ -59,6 +60,15 @@ export async function createProduct(req, res) {
     };
 
     const { rows } = await pool.query(query);
+
+    // Log audit
+    await logAudit({
+      user_id: req.user?.id || null,
+      action: "CREATE",
+      affected_table: "financial_products",
+      description: `Created product: ${body.name}`,
+    });
+
     res.status(201).json({
       msg: "Product successfully created",
       user: rows[0],
@@ -98,6 +108,15 @@ export async function updateProduct(req, res) {
     };
 
     const { rows } = await pool.query(query);
+
+    // Log audit
+    await logAudit({
+      user_id: req.user?.id || null,
+      action: "UPDATE",
+      affected_table: "financial_products",
+      description: `Updated product with id: ${body.id}`,
+    });
+
     res.status(200).json({ msg: "Product successfully updated" });
   } catch (error) {
     console.error("Error updating product:", error);

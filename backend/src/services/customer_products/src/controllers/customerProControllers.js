@@ -1,4 +1,5 @@
 import { pool } from "../../../../../../shared/config/db.js";
+import { logAudit } from "../../../../../../shared/auditLogger.js";
 
 export async function read(req, res) {
   const { id } = req.params;
@@ -49,6 +50,15 @@ export async function createCustomerProduct(req, res) {
       ],
     };
     const { rows } = await pool.query(query);
+
+    // Log audit
+    await logAudit({
+      user_id: req.user?.id || null,
+      action: "CREATE",
+      affected_table: "customer_products",
+      description: `Registered product for customer: ${body.customer_id}`,
+    });
+
     res.status(200).json({ msg: "Successful product registration" });
   } catch (error) {
     console.error("Error registering product:", error);
