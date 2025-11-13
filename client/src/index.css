@@ -33,7 +33,8 @@ button {
 }
 
 input,
-select {
+select,
+textarea {
   outline: none;
   border-radius: 8px;
   padding: 8px;
@@ -41,11 +42,23 @@ select {
   border: none;
   box-shadow: 0 0 0 0.05em var(--quintary-color-opacity);
   border-width: 0.05em;
+  color: var(--secondary-color);
+}
+
+input[type="checkbox"] {
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  width: 20px;
+  height: 20px;
 }
 
 select {
-  color: var(--secondary-color);
   cursor: pointer;
+}
+
+textarea {
+  min-height: 70px;
 }
 
 select option {
@@ -137,15 +150,16 @@ select option {
   flex-direction: column;
   gap: 10px;
   position: relative;
+
   section.logo {
     display: flex;
     align-items: center;
     img {
-      width: 35px;
-      height: 35px;
+      width: 45px;
+      height: 45px;
     }
     h1 {
-      font-size: 1.3rem;
+      font-size: 1.6rem;
     }
   }
 
@@ -180,7 +194,7 @@ select option {
   align-items: center;
   gap: 6px;
   border-radius: 8px;
-  padding: 3px;
+  padding: 8px;
   text-decoration: none;
   color: var(--secondary-color);
   width: 100%;
@@ -218,7 +232,7 @@ select option {
   border-radius: 8px;
   color: var(--secondary-color);
   position: relative;
-  background-color: var(--quaternary-color);
+  background-color: var(--tertiary-color);
   box-shadow: 0 0 0 0.05em var(--quintary-color-opacity);
 
   header {
@@ -275,7 +289,43 @@ select option {
   }
 }
 
-button.createUser {
+.containerForm {
+  width: 40%;
+}
+
+form {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  textArea {
+    resize: none;
+  }
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sectionCheckboxes {
+  display: flex;
+  gap: 10px;
+}
+
+.containerCheckbox {
+  flex-direction: row;
+}
+
+.save {
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  padding-block: 8px;
+}
+
+button.create {
   background-color: var(--quaternary-color);
   color: var(--secondary-color);
   padding: 5px 20px;

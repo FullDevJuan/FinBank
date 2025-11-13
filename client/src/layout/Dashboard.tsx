@@ -3,12 +3,14 @@ import Nav from "../components/common/Nav";
 import Home from "../pages/Home";
 import Users from "../pages/Users";
 import Products from "../pages/Products";
+import CreateProduct from "../components/products/CreateProduct";
 import Customers from "../pages/Customers";
 import Audit from "../pages/Audit";
 import Transactions from "../pages/Transactions";
 import Accounts from "../pages/Accounts";
 import Interactions from "../pages/Interactions";
 import ProtectedRoute from "../components/common/ProtectedRoute";
+import AccountDetail from "../pages/AccountDetail";
 
 export default function Dashboard() {
   return (
@@ -25,6 +27,7 @@ export default function Dashboard() {
           }
         />
         <Route path="products" element={<Products />} />
+        <Route path="/products/create" element={<CreateProduct />} />
         <Route path="customers" element={<Customers />} />
         <Route
           path="audit"
@@ -36,6 +39,7 @@ export default function Dashboard() {
         />
         <Route path="transactions" element={<Transactions />} />
         <Route path="accounts" element={<Accounts />} />
+        <Route path="/accounts/:id" element={<AccountDetail />}></Route>
         <Route path="interactions" element={<Interactions />} />
       </Routes>
     </main>

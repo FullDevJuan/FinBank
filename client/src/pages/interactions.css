@@ -1,0 +1,194 @@
+.interaction-card {
+  background-color: var(--tertiary-color);
+  border: 1px solid rgba(125, 126, 125, 0.3);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* .interaction-card__accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+} */
+
+.interaction-card__content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.interaction-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.interaction-card__type {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(125, 126, 125, 0.2);
+}
+
+.interaction-card__type-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.interaction-card__type-label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.interaction-card__type--call {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: #3b82f6;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.interaction-card__type--email {
+  background-color: rgba(168, 85, 247, 0.15);
+  color: #a855f7;
+  border-color: rgba(168, 85, 247, 0.3);
+}
+
+.interaction-card__type--meeting {
+  background-color: rgba(251, 146, 60, 0.15);
+  color: #fb923c;
+  border-color: rgba(251, 146, 60, 0.3);
+}
+
+.interaction-card__type--chat {
+  background-color: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.interaction-card__outcome {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.interaction-card__outcome-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.interaction-card__outcome-label {
+  text-transform: capitalize;
+}
+
+.interaction-card__outcome--success {
+  background-color: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+}
+
+.interaction-card__outcome--pending {
+  background-color: rgba(234, 179, 8, 0.15);
+  color: #eab308;
+}
+
+.interaction-card__outcome--failed {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+.interaction-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.interaction-card__subject {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--secondary-color);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.interaction-card__description {
+  font-size: 14px;
+  color: var(--quintary-color);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.interaction-card__footer {
+  padding-top: 16px;
+  border-top: 1px solid rgba(125, 126, 125, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.interaction-card__info-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.interaction-card__footer-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--quintary-color);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.interaction-card__info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.interaction-card__info-label {
+  font-size: 11px;
+  color: var(--quintary-color);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.interaction-card__info-value {
+  font-size: 13px;
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
+/* InteractionsGrid.css */
+.interactions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .interactions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1400px) {
+  .interactions-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -1,14 +1,25 @@
 import { useForm } from "react-hook-form";
 import { type UsersLogin } from "../types/user.types";
 import { type Login } from "../types/user.types";
+import { useState } from "react";
 import "./login.css";
 
 export default function Login({ onSubmit }: Login) {
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<UsersLogin>();
+
+  const handleFormSubmit = async (data: UsersLogin) => {
+    setIsLoading(true);
+    try {
+      await onSubmit(data);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="pearl-mist-background-container">
@@ -26,7 +37,7 @@ export default function Login({ onSubmit }: Login) {
             <h1>Login to your account</h1>
             <p>Enter your email below to login to your account</p>
           </header>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(handleFormSubmit)}>
             <div>
               <label htmlFor="email">Email</label>
               <input
@@ -66,7 +77,15 @@ export default function Login({ onSubmit }: Login) {
               )}
             </div>
             <div>
-              <button type="submit">Login</button>
+              <button type="submit" disabled={isLoading}>
+                {isLoading ? (
+                  <div className="loading-spinner">
+                    <div className="spinner"></div>
+                  </div>
+                ) : (
+                  "Login"
+                )}
+              </button>
             </div>
           </form>
         </div>

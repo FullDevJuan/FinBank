@@ -3,6 +3,7 @@ import Button from "../components/common/Button.tsx";
 import CreateUser from "../components/users/CreateUser.tsx";
 import { type Users } from "../types/user.types.ts";
 import UpdateUser from "../components/users/UpdateUser.tsx";
+import { Save, ExternalLink, Mail, Shield, User } from "lucide-react";
 import {
   // deleteUser,
   getUsersByFilters,
@@ -88,7 +89,7 @@ export default function Users() {
           onClickBtn={() => {
             setForm({ type: "create" });
           }}
-          className="createUser"
+          className="create"
         >
           Create user
         </Button>
@@ -183,96 +184,27 @@ export default function Users() {
                 }}
                 className="btn-extend"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 512 512"
-                >
-                  <path
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="15"
-                    d="M384 224v184a40 40 0 0 1-40 40H104a40 40 0 0 1-40-40V168a40 40 0 0 1 40-40h167.48M336 64h112v112M224 288L440 72"
-                  />
-                </svg>
+                <ExternalLink size={20} />
               </button>
               <h2>
                 <span className="userIcon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="1.5"
-                      d="M21 22c0-4.418-3.626-8-8.1-8h-1.8C6.626 14 3 17.582 3 22m9-11a4 4 0 0 1-4-4V6a4 4 0 1 1 8 0v1a4 4 0 0 1-4 4"
-                    />
-                  </svg>
+                  <User size={22} />
                 </span>
                 {user.name}
               </h2>
-              <span className="username">@{user.username}</span>
+              <span className="username">@ {user.username}</span>
             </header>
             <div>
               <p style={{ display: "flex", gap: "5px" }}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="1.5"
-                    d="m5 7.06l6.87 5.89c.07.06.19.06.26 0L19 7.06M3.2 4h17.6c.66 0 1.2.54 1.2 1.2v12.4c0 1.32-1.08 2.4-2.4 2.4H4.4C3.08 20 2 18.92 2 17.6V5.2C2 4.54 2.54 4 3.2 4"
-                  />
-                </svg>
+                <Mail size={18} />
                 {user.email}
               </p>
               <p style={{ display: "flex", gap: "2px" }}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <g
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="1.1"
-                  >
-                    <path d="M18.709 3.495C16.817 2.554 14.5 2 12 2s-4.816.554-6.709 1.495c-.928.462-1.392.693-1.841 1.419S3 6.343 3 7.748v3.49c0 5.683 4.542 8.843 7.173 10.196c.734.377 1.1.566 1.827.566s1.093-.189 1.827-.566C16.457 20.08 21 16.92 21 11.237V7.748c0-1.405 0-2.108-.45-2.834s-.913-.957-1.841-1.419" />
-                    <path d="M12 9v1m-1-.5a1 1 0 1 0 2 0a1 1 0 0 0-2 0" />
-                    <path d="M12.75 14h-1.5l.75-3.5z" />
-                  </g>
-                </svg>
+                <Shield size={18} />
                 {user.rol}
               </p>
               <span className="date">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 32 32"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M7.5 29A4.5 4.5 0 0 1 3 24.5v-17A4.5 4.5 0 0 1 7.5 3h13.843q.06 0 .118.002a.5.5 0 0 1 .118.004a4.5 4.5 0 0 1 2.946 1.312l3.157 3.157A4.5 4.5 0 0 1 29 10.657V24.5a4.5 4.5 0 0 1-4.5 4.5zm0-25A3.5 3.5 0 0 0 4 7.5v17a3.5 3.5 0 0 0 3 3.465V18.5A2.5 2.5 0 0 1 9.5 16h13a2.5 2.5 0 0 1 2.5 2.5v9.465a3.5 3.5 0 0 0 3-3.465V10.657a3.5 3.5 0 0 0-1.025-2.475l-3.157-3.157A3.5 3.5 0 0 0 22 4.062V9.5a2.5 2.5 0 0 1-2.5 2.5h-8A2.5 2.5 0 0 1 9 9.5V4zM24 28v-9.5a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 8 18.5V28zM21 4H10v5.5a1.5 1.5 0 0 0 1.5 1.5h8A1.5 1.5 0 0 0 21 9.5z"
-                  />
-                </svg>
+                <Save size={18} />
                 {new Date(user.created_at).toLocaleDateString("es-Es", {
                   year: "numeric",
                   month: "long",
@@ -281,35 +213,6 @@ export default function Users() {
                   minute: "2-digit",
                 })}
               </span>
-              {/* {false && (
-                <button
-                  className="btn-delete"
-                  onClick={() => {
-                    deleteUser(user.id).then((res) => {
-                      alert(
-                        `${
-                          res.error
-                            ? `${res.msg}. Error: ${res.error}`
-                            : `${res.msg}`
-                        }`
-                      );
-                      getAll();
-                    });
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 32 32"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M14 12.5a.5.5 0 0 0-1 0v11a.5.5 0 0 0 1 0zm4.5-.5a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-1 0v-11a.5.5 0 0 1 .5-.5m2-5.5V7h8a.5.5 0 0 1 0 1h-2.543l-1.628 17.907A4.5 4.5 0 0 1 19.847 30h-7.694a4.5 4.5 0 0 1-4.482-4.093L6.043 8H3.5a.5.5 0 0 1 0-1h8v-.5a4.5 4.5 0 1 1 9 0m-8 0V7h7v-.5a3.5 3.5 0 1 0-7 0M7.048 8l1.62 17.817A3.5 3.5 0 0 0 12.152 29h7.694a3.5 3.5 0 0 0 3.486-3.183L24.953 8z"
-                    />
-                  </svg>
-                </button>
-              )} */}
             </div>
           </div>
         ))}
