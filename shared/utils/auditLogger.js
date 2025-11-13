@@ -1,13 +1,13 @@
-import { pool } from "./config/db.js";
+import { pool } from "../config/db.js";
 
 /**
  * Log an audit record in the audit_logs table.
  *
  * @param {Object} params
- * @param {string|number|null} params.user_id
- * @param {string} params.action
- * @param {string} params.affected_table
- * @param {string} params.description
+ * @param {string|number|null} params.user_id - User ID from request body
+ * @param {string} params.action - Action type (CREATE, UPDATE, DELETE, etc.)
+ * @param {string} params.affected_table - Table name that was affected
+ * @param {string} params.description - Description of the action
  */
 export async function logAudit({
   user_id = null,

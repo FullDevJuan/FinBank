@@ -1,5 +1,5 @@
 import { pool } from "../../../../../../shared/config/db.js";
-import { logAudit } from "../../../../../../shared/auditLogger.js";
+import { logAudit } from "../../../../../../shared/utils/auditLogger.js";
 
 export async function read(req, res) {
   try {
@@ -42,7 +42,7 @@ export async function createTransaction(req, res) {
 
     // Log audit
     await logAudit({
-      user_id: req.user?.id || null,
+      user_id: body.user_id,
       action: "CREATE",
       affected_table: "transactions",
       description: `Created transaction: ${body.transaction_type} - Amount: ${body.amount}`,

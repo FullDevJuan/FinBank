@@ -1,5 +1,5 @@
 import { pool } from "../../../../../../shared/config/db.js";
-import { logAudit } from "../../../../../../shared/auditLogger.js";
+import { logAudit } from "../../../../../../shared/utils/auditLogger.js";
 
 export async function read(req, res) {
   const query = `SELECT 
@@ -42,7 +42,7 @@ export async function createInteraction(req, res) {
 
     // Log audit
     await logAudit({
-      user_id: req.user?.id || null,
+      user_id: body.user_id,
       action: "CREATE",
       affected_table: "customer_interactions",
       description: `Created interaction: ${body.interaction_type} - Subject: ${body.subject}`,
@@ -84,7 +84,7 @@ export async function updateInteraction(req, res) {
 
     // Log audit
     await logAudit({
-      user_id: req.user?.id || null,
+      user_id: body.user_id,
       action: "UPDATE",
       affected_table: "customer_interactions",
       description: `Updated interaction with id: ${body.id}`,

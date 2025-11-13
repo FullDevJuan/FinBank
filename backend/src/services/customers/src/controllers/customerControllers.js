@@ -1,5 +1,5 @@
 import { pool } from "../../../../../../shared/config/db.js";
-import { logAudit } from "../../../../../../shared/auditLogger.js";
+import { logAudit } from "../../../../../../shared/utils/auditLogger.js";
 
 export async function read(req, res) {
   try {
@@ -67,7 +67,7 @@ export async function createCustomer(req, res) {
 
     // Log audit
     await logAudit({
-      user_id: req.user?.id || null,
+      user_id: body.user_id,
       action: "CREATE",
       affected_table: "customers",
       description: `Created customer: ${body.name} (${body.document_number})`,
@@ -113,7 +113,7 @@ export async function updateCustomer(req, res) {
 
     // Log audit
     await logAudit({
-      user_id: req.user?.id || null,
+      user_id: body.user_id,
       action: "UPDATE",
       affected_table: "customers",
       description: `Updated customer with id: ${body.id}`,

@@ -1,5 +1,5 @@
 import { pool } from "../../../../../../shared/config/db.js";
-import { logAudit } from "../../../../../../shared/auditLogger.js";
+import { logAudit } from "../../../../../../shared/utils/auditLogger.js";
 
 export async function read(req, res) {
   const { id } = req.params;
@@ -53,7 +53,7 @@ export async function createCustomerProduct(req, res) {
 
     // Log audit
     await logAudit({
-      user_id: req.user?.id || null,
+      user_id: body.user_id,
       action: "CREATE",
       affected_table: "customer_products",
       description: `Registered product for customer: ${body.customer_id}`,

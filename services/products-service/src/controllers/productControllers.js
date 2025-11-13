@@ -1,6 +1,5 @@
-import { text } from "express";
 import { pool } from "../../../../shared/config/db.js";
-import { logAudit } from "../../../../shared/auditLogger.js";
+import { logAudit } from "../../../../shared/utils/auditLogger.js";
 
 export async function read(req, res) {
   try {
@@ -63,7 +62,7 @@ export async function createProduct(req, res) {
 
     // Log audit
     await logAudit({
-      user_id: req.user?.id || null,
+      user_id: body.user_id,
       action: "CREATE",
       affected_table: "financial_products",
       description: `Created product: ${body.name}`,
@@ -111,7 +110,7 @@ export async function updateProduct(req, res) {
 
     // Log audit
     await logAudit({
-      user_id: req.user?.id || null,
+      user_id: body.user_id,
       action: "UPDATE",
       affected_table: "financial_products",
       description: `Updated product with id: ${body.id}`,
