@@ -1,6 +1,5 @@
 import type { Customer } from "../../types/customer.type";
 import {
-  User,
   UserCircle,
   Mail,
   Phone,
