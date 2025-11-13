@@ -3,14 +3,19 @@ import { pool } from "../../../../../../shared/config/db.js";
 export async function read(req, res) {
   try {
     const { rows } = await pool.query(`SELECT 
-    a.account_number,
-    a.account_type,
-    t.amount,
-    t.transaction_type,
-    t.created_at AS date,
-    (SELECT a.account_number FROM accounts a WHERE a.id = (t.details->>'destination_account_id')::uuid) AS destination_account_number
-    FROM accounts a
-    INNER JOIN transactions t ON a.id = t.account_id`);
+      t.id,
+      a.account_number,
+      a.account_type,
+      t.amount,
+      t.transaction_type,
+      t.created_at AS date,
+      COALESCE(
+      (SELECT a2.account_number::text 
+      FROM accounts a2 
+      WHERE a2.id = (t.details->>'destination_account_id')::uuid),
+      'N/A') AS destination_account_number
+      FROM accounts a
+      INNER JOIN transactions t ON a.id = t.account_id`);
 
     res.status(200).json(rows);
   } catch (error) {
