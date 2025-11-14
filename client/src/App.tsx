@@ -4,6 +4,7 @@ import Dashboard from "./layout/Dashboard";
 import { loginUser } from "./api/users.api";
 import type { UsersLogin } from "./types/user.types";
 import { useNavigate } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   const navigate = useNavigate();
@@ -21,20 +22,35 @@ function App() {
   const isAuthenticated = sessionStorage.getItem("token") !== null;
 
   return (
-    <Routes>
-      <Route 
-        path="/" 
-        element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login onSubmit={handleLogin} />} 
-      />
-      <Route 
-        path="/login" 
-        element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login onSubmit={handleLogin} />} 
-      />
-      <Route
-        path="/dashboard/*"
-        element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />}
-      />
-    </Routes>
+    <>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            isAuthenticated ? (
+              <Navigate to="/dashboard" />
+            ) : (
+              <Login onSubmit={handleLogin} />
+            )
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            isAuthenticated ? (
+              <Navigate to="/dashboard" />
+            ) : (
+              <Login onSubmit={handleLogin} />
+            )
+          }
+        />
+        <Route
+          path="/dashboard/*"
+          element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />}
+        />
+      </Routes>
+      <Analytics />
+    </>
   );
 }
 
