@@ -5,6 +5,7 @@ import { loginUser } from "./api/users.api";
 import type { UsersLogin } from "./types/user.types";
 import { useNavigate } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function App() {
   const navigate = useNavigate();
@@ -50,6 +51,7 @@ function App() {
         />
       </Routes>
       <Analytics />
+      <SpeedInsights />
     </>
   );
 }
