@@ -79,6 +79,24 @@ export async function update(req, res) {
   const { body } = req;
 
   try {
+    let passValue = body.pass;
+
+    // Si se proporciona una contraseña, hashearla
+    if (body.pass && body.pass.trim() !== "") {
+      passValue = await bcrypt.hash(body.pass, 10);
+    } else {
+      // Si no se proporciona contraseña, obtener la actual de la base de datos
+      const currentUser = await pool.query(
+        "SELECT pass FROM users WHERE id = $1",
+        [body.id]
+      );
+      if (currentUser.rows.length > 0) {
+        passValue = currentUser.rows[0].pass;
+      } else {
+        return res.status(404).json({ msg: "User not found" });
+      }
+    }
+
     const query = {
       text: `UPDATE users SET
       name = $1, 
@@ -93,7 +111,7 @@ export async function update(req, res) {
         body.username,
         body.email,
         body.edad,
-        body.pass,
+        passValue,
         body.rol,
         body.id,
       ],

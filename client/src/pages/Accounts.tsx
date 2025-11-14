@@ -32,13 +32,13 @@ export default function Accounts() {
     <section className="content">
       <h1>Accounts Page.</h1>
       <section className="navbarOptions">
-        <button className="create">Create account</button>
+        {/* <button className="create">Create account</button> */}
       </section>
       {isLoading && <p>Cargando clientes...</p>}
       {error && <p>{error}</p>}
       <div className="customers-grid">
         {accounts?.map((account) => (
-          <AccountCard key={account.account_number} account={account} />
+          <AccountCard key={account.id} account={account} />
         ))}
       </div>
     </section>

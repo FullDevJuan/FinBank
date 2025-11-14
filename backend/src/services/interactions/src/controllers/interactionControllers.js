@@ -4,6 +4,7 @@ import { logAudit } from "../../../../../../shared/utils/auditLogger.js";
 export async function read(req, res) {
   const query = `SELECT 
     ci.id,
+    ci.customer_id,
     c.name AS customer,
     u.username AS user,
     ci.interaction_type,

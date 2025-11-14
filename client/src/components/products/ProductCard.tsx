@@ -1,10 +1,12 @@
 import { CreditCard, Info, Shield, TrendingUp, Wallet } from "lucide-react";
 import { type Product } from "../../types/product.types.ts";
+import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
   product: Product;
 }
 export default function ProductCard({ product }: ProductCardProps) {
+  const navigate = useNavigate();
   const getIcon = (type: string) => {
     switch (type) {
       case "credito":
@@ -125,6 +127,9 @@ export default function ProductCard({ product }: ProductCardProps) {
             className="product-card__action"
             aria-label="Más información"
             title="Más información"
+            onClick={() => {
+              navigate("/dashboard/products/edit", { state: { product } });
+            }}
           >
             <Info className="icon-small" />
           </button>

@@ -387,3 +387,355 @@ button.create {
   border-left: 1px solid #fff;
   border-bottom: 1px solid #fff;
 }
+
+/* Customer Products Table Styles */
+.customerProductsContainer {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: var(--tertiary-color);
+  border-radius: 8px;
+  box-shadow: 0 0 0 0.05em var(--quintary-color-opacity);
+}
+
+.customerProductsContainer h3 {
+  margin-bottom: 15px;
+  color: var(--secondary-color);
+  font-size: 1.1rem;
+}
+
+.customerProductsTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--primary-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.customerProductsTable thead {
+  background-color: var(--quaternary-color);
+}
+
+.customerProductsTable thead tr th {
+  padding: 12px;
+  text-align: left;
+  color: var(--secondary-color);
+  font-weight: 600;
+  border-bottom: 1px solid var(--quintary-color-opacity);
+}
+
+.customerProductsTable tbody tr {
+  border-bottom: 1px solid var(--quaternary-color);
+  transition: background-color 0.2s ease;
+}
+
+.customerProductsTable tbody tr:hover {
+  background-color: var(--quaternary-color);
+}
+
+.customerProductsTable tbody td {
+  padding: 12px;
+  color: var(--secondary-color);
+}
+
+.customerProductsTable .textRight {
+  text-align: right;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.statusBadge--activo {
+  background-color: #1b5e20;
+  color: #4caf50;
+}
+
+.statusBadge--inactivo {
+  background-color: #6d4c41;
+  color: #ff9800;
+}
+
+.statusBadge--suspendido {
+  background-color: #b71c1c;
+  color: #ff7979;
+}
+
+/* Register Product Modal Styles */
+.registerProductModal {
+  background-color: var(--tertiary-color);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--quaternary-color);
+  padding-bottom: 10px;
+}
+
+.modalHeader h2 {
+  margin: 0;
+  color: var(--secondary-color);
+  font-size: 1.2rem;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--secondary-color);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+  box-shadow: none;
+}
+
+.closeButton:hover {
+  color: var(--quintary-color);
+}
+
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modalForm > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.modalForm label {
+  color: var(--secondary-color);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.modalForm input,
+.modalForm select {
+  background-color: var(--quaternary-color);
+  color: var(--secondary-color);
+  border: 1px solid var(--quaternary-color);
+  padding: 8px 10px;
+  border-radius: 6px;
+  transition: border-color 0.2s ease;
+}
+
+.modalForm input:focus,
+.modalForm select:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+/* Account Detail Styles */
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 15px;
+  background-color: var(--quaternary-color);
+  color: var(--secondary-color);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 0 0 0.05em var(--quintary-color-opacity);
+}
+
+.backButton:hover {
+  background-color: var(--quintary-color-opacity);
+}
+
+.accountDetailContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.accountDetailHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: var(--tertiary-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 0 0.05em var(--quintary-color-opacity);
+}
+
+.accountDetailHeaderInfo h1 {
+  margin: 0 0 5px 0;
+  color: var(--secondary-color);
+  font-size: 1.8rem;
+}
+
+.accountDetailSubtitle {
+  color: var(--quintary-color);
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.accountDetailBalance {
+  text-align: right;
+}
+
+.balanceLabel {
+  color: var(--quintary-color);
+  margin: 0 0 5px 0;
+  font-size: 0.85rem;
+}
+
+.balanceAmount {
+  color: var(--secondary-color);
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.accountDetailGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+.accountDetailCard {
+  background-color: var(--tertiary-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 0 0.05em var(--quintary-color-opacity);
+}
+
+.accountDetailCard h3 {
+  margin: 0 0 15px 0;
+  color: var(--secondary-color);
+  font-size: 1.1rem;
+}
+
+.accountDetailInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--quaternary-color);
+}
+
+.infoRow:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.infoLabel {
+  color: var(--quintary-color);
+  font-size: 0.9rem;
+}
+
+.infoValue {
+  color: var(--secondary-color);
+  font-weight: 500;
+}
+
+/* Account Transactions Table */
+.accountTransactionsContainer {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: var(--tertiary-color);
+  border-radius: 8px;
+  box-shadow: 0 0 0 0.05em var(--quintary-color-opacity);
+}
+
+.accountTransactionsContainer h3 {
+  margin-bottom: 15px;
+  color: var(--secondary-color);
+  font-size: 1.1rem;
+}
+
+.accountTransactionsTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--primary-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.accountTransactionsTable thead {
+  background-color: var(--quaternary-color);
+}
+
+.accountTransactionsTable thead tr th {
+  padding: 12px;
+  text-align: left;
+  color: var(--secondary-color);
+  font-weight: 600;
+  border-bottom: 1px solid var(--quintary-color-opacity);
+}
+
+.accountTransactionsTable tbody tr {
+  border-bottom: 1px solid var(--quaternary-color);
+  transition: background-color 0.2s ease;
+}
+
+.accountTransactionsTable tbody tr:hover {
+  background-color: var(--quaternary-color);
+}
+
+.accountTransactionsTable tbody td {
+  padding: 12px;
+  color: var(--secondary-color);
+}
+
+.transactionTypeCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.transactionIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.transactionIcon--ingreso {
+  background-color: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+}
+
+.transactionIcon--egreso {
+  background-color: rgba(255, 153, 0, 0.2);
+  color: #ff9800;
+}
+
+.amount {
+  font-weight: 600;
+}
+
+.amount--ingreso {
+  color: #4caf50;
+}
+
+.amount--egreso {
+  color: #ff9800;
+}
+
+.dateCell {
+  font-size: 0.85rem;
+  color: var(--quintary-color);
+}

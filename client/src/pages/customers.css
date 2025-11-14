@@ -142,6 +142,11 @@
   font-weight: 500;
 }
 
+.customer-card__edit-btn {
+  color: var(--quintary-color);
+  box-shadow: none;
+}
+
 /* CustomersGrid.css */
 .customers-grid {
   display: grid;

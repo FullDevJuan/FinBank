@@ -5,12 +5,13 @@ import Users from "../pages/Users";
 import Products from "../pages/Products";
 import CreateProduct from "../components/products/CreateProduct";
 import Customers from "../pages/Customers";
-import Audit from "../pages/Audit";
+import CreateCustomer from "../components/customers/CreateCustomer";
 import Transactions from "../pages/Transactions";
 import Accounts from "../pages/Accounts";
 import Interactions from "../pages/Interactions";
+import CreateInteraction from "../components/interactions/CreateInteraction";
 import ProtectedRoute from "../components/common/ProtectedRoute";
-import AccountDetail from "../pages/AccountDetail";
+import AccountDetail from "../components/accounts/AccountDetail";
 
 export default function Dashboard() {
   return (
@@ -28,19 +29,16 @@ export default function Dashboard() {
         />
         <Route path="products" element={<Products />} />
         <Route path="/products/create" element={<CreateProduct />} />
+        <Route path="/products/edit" element={<CreateProduct />} />
         <Route path="customers" element={<Customers />} />
-        <Route
-          path="audit"
-          element={
-            <ProtectedRoute allowedRoles={["Admin"]}>
-              <Audit />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/customers/create" element={<CreateCustomer />} />
+        <Route path="/customers/edit" element={<CreateCustomer />} />
         <Route path="transactions" element={<Transactions />} />
         <Route path="accounts" element={<Accounts />} />
         <Route path="/accounts/:id" element={<AccountDetail />}></Route>
         <Route path="interactions" element={<Interactions />} />
+        <Route path="/interactions/create" element={<CreateInteraction />} />
+        <Route path="/interactions/edit" element={<CreateInteraction />} />
       </Routes>
     </main>
   );

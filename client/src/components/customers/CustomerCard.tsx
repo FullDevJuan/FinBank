@@ -6,13 +6,16 @@ import {
   MapPin,
   Calendar,
   CreditCard,
+  Edit,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface customerCardProps {
   customer: Customer;
 }
 
 export default function CustomerCard({ customer }: customerCardProps) {
+  const navigate = useNavigate();
   const calculateAge = (birthDate: string): number => {
     const birth = new Date(birthDate);
     const today = new Date();
@@ -118,6 +121,16 @@ export default function CustomerCard({ customer }: customerCardProps) {
           <span className="customer-card__footer-value">
             {formatDate(customer.created_at)}
           </span>
+          <button
+            className="customer-card__edit-btn"
+            aria-label="Editar"
+            title="Editar cliente"
+            onClick={() => {
+              navigate("/dashboard/customers/edit", { state: { customer } });
+            }}
+          >
+            <Edit className="icon-small" />
+          </button>
         </div>
       </div>
     </article>

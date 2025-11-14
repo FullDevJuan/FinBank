@@ -68,6 +68,12 @@ export default function ProductForm({
       status: data.status,
       details,
     };
+
+    // Include id if editing
+    if (data.id) {
+      formattedData.id = data.id;
+    }
+
     APIFunction(formattedData);
   };
 

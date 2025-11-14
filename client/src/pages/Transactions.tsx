@@ -31,9 +31,7 @@ export default function Transactions() {
   return (
     <section className="content">
       <h1>Transactions Page.</h1>
-      <section className="navbarOptions">
-        <button className="create">Create transaction</button>
-      </section>
+      <section className="navbarOptions"></section>
       {isLoading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       <TransactionList transactions={transactions} />

@@ -8,7 +8,7 @@ import {
   Users,
   BookUser,
   CircleDollarSign,
-  SquareChartGantt,
+  // SquareChartGantt,
   SquareUser,
   HandCoins,
   LogOut,
@@ -57,17 +57,7 @@ function Nav() {
         <HandCoins size={20} />
         Products
       </NavLink>
-      {isAdmin && (
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? "navItem navItemActive" : "navItem"
-          }
-          to="/dashboard/users"
-        >
-          <Users size={20} />
-          Users
-        </NavLink>
-      )}
+
       <NavLink
         className={({ isActive }) =>
           isActive ? "navItem navItemActive" : "navItem"
@@ -104,8 +94,19 @@ function Nav() {
         <NotebookPen size={20} />
         Interactions
       </NavLink>
-
       {isAdmin && (
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "navItem navItemActive" : "navItem"
+          }
+          to="/dashboard/users"
+        >
+          <Users size={20} />
+          Users
+        </NavLink>
+      )}
+
+      {/* {isAdmin && (
         <NavLink
           className={({ isActive }) =>
             isActive ? "navItem navItemActive" : "navItem"
@@ -115,7 +116,7 @@ function Nav() {
           <SquareChartGantt size={20} />
           Audit
         </NavLink>
-      )}
+      )} */}
 
       <section className="userProfile">
         <div>

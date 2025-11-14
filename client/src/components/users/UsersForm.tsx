@@ -79,20 +79,25 @@ function Form({ defaultValues, onSubmit }: Props) {
         </select>
         {errors.rol && <Span>{String(errors.rol.message)}</Span>}
       </div>
-      {/* <div>
+      <div>
         <label htmlFor="pass">Password</label>
         <input
-          type="text"
+          type="password"
           id="pass"
+          placeholder={
+            defaultValues ? "Leave empty to keep current password" : ""
+          }
           {...register("pass", {
-            required: {
-              value: true,
-              message: "Required field",
-            },
+            required: defaultValues
+              ? false
+              : { value: true, message: "Required field" },
+            minLength: defaultValues
+              ? { value: 6, message: "Password must be at least 6 characters" }
+              : undefined,
           })}
         />
         {errors.pass && <Span>{String(errors.pass.message)}</Span>}
-      </div> */}
+      </div>
       <div>
         <label htmlFor="age">Age</label>
         <input

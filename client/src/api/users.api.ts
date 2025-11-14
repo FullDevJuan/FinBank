@@ -33,10 +33,14 @@ export async function getUsersByFilters(data: UsersFilters) {
 
 export async function saveUser(body: Users) {
   try {
+    const user = JSON.parse(sessionStorage.getItem("user") || "{}");
     const options = {
       method: "POST",
       headers: getAuthHeaders(),
-      body: JSON.stringify(body),
+      body: JSON.stringify({
+        ...body,
+        user_id: user.id || null,
+      }),
     };
     const req = await fetch(`${BACKEND_URL}/users/create`, options);
     const res = await req.json();
@@ -48,10 +52,14 @@ export async function saveUser(body: Users) {
 
 export async function updateUser(body: Users) {
   try {
+    const user = JSON.parse(sessionStorage.getItem("user") || "{}");
     const options = {
       method: "PUT",
       headers: getAuthHeaders(),
-      body: JSON.stringify(body),
+      body: JSON.stringify({
+        ...body,
+        user_id: user.id || null,
+      }),
     };
     const req = await fetch(`${BACKEND_URL}/users/update/${body.id}`, options);
     const res = await req.json();

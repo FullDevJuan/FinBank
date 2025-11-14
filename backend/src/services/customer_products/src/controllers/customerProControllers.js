@@ -53,7 +53,7 @@ export async function createCustomerProduct(req, res) {
 
     // Log audit
     await logAudit({
-      user_id: body.user_id,
+      user_id: body.user_id || null,
       action: "CREATE",
       affected_table: "customer_products",
       description: `Registered product for customer: ${body.customer_id}`,

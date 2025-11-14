@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { type Interaction } from "../../types/interaction.type";
 import {
   Phone,
@@ -17,6 +18,12 @@ interface InteractionCardProps {
 }
 
 export default function InteractionCard({ interaction }: InteractionCardProps) {
+  const navigate = useNavigate();
+
+  const handleEditClick = () => {
+    navigate("/dashboard/interactions/edit", { state: { interaction } });
+  };
+
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
     return date.toLocaleDateString("es-CO", {
@@ -120,7 +127,11 @@ export default function InteractionCard({ interaction }: InteractionCardProps) {
   };
 
   return (
-    <article className="interaction-card">
+    <article
+      className="interaction-card"
+      onClick={handleEditClick}
+      style={{ cursor: "pointer" }}
+    >
       <div className="interaction-card__accent" />
 
       <div className="interaction-card__content">
