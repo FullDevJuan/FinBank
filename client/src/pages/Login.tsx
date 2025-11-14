@@ -88,13 +88,13 @@ export default function Login({ onSubmit }: Login) {
               </button>
             </div>
           </form>
-          <button
+          {/* <button
             onClick={() => {
               throw new Error("This is your first error!");
             }}
           >
             Break the world
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
